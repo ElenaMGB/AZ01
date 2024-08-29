@@ -11,7 +11,7 @@ data = {
 }
 
 df = pd.DataFrame(data) # Создаем DataFrame из словаря
-print(df.tail())
+# print(df.tail())
 
 average_scores = df.iloc[:, 1:].mean()
 median_scores = df.iloc[:, 1:].median()
@@ -19,9 +19,21 @@ median_scores = df.iloc[:, 1:].median()
 print(f"Средние оценки по предметам:\n{average_scores}")
 print(f"Медианные оценки по предметам:\n{median_scores}")
 
+print(f"Оценки по математике: {df['Математика'].values}")
+median_math = df['Математика'].median()
+
 Q1_math = df['Математика'].quantile(0.25)
 Q3_math = df['Математика'].quantile(0.75)
 
 IQR_math = Q3_math - Q1_math
 
-print(f"Математика Q1 {Q1_math}, Q3 {Q3_math}, IQR = Q3 - Q1 = {IQR_math} \n Эти значения показывают, что 25% учеников имеют оценку по математике 3 или ниже, 75% учеников имеют оценку 4 или ниже, и разница между 75-м и 25-м процентилями составляет 1, балла.")
+print(f"Математика Q1 {Q1_math}, Q3 {Q3_math}, IQR = Q3 - Q1 = {IQR_math} ") #\n Эти значения показывают, что 25% учеников имеют оценку по математике 3 или ниже, 75% учеников имеют оценку 4 или ниже, и разница между 75-м и 25-м процентилями составляет 1, балла.")
+
+#Стандартное отклонение 
+std= df.iloc[:, 1:].std()
+print(f"Стандартное отклонение оценок по предметам:\n{std}")
+
+# data1 = [4, 5, 3, 4, 5, 2, 4, 3, 5, 4]
+# s = pd.Series(data1)
+# print(f"Среднее значение серии: {s.median()}")
+# print(f"{s.quantile([.25, .5, .75])}")
